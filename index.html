@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <title>Sign In</title>
+      <meta charset="utf-8"/>
+      <link rel="stylesheet" type="text/css" href="styles/styles.css"/>
+      <script src="https://connect.soundcloud.com/sdk/sdk-3.1.2.js"></script>
+      <script>
+        SC.initialize({
+          client_id: 'IUroj0uLQOEEdFeNIFnj0Xxa3Hr9VVrO',
+          redirect_uri: 'http://localhost:8080/callback.html'
+        });
+
+        // $(document).ready(function() {
+        //   SC.get('/tracks/293', function(track) {
+        //     SC.oEmbed(track.permalink_url, document.getElementById('player'));
+        //   });
+        // });
+        SC.connect().then(function() {
+          return SC.get('/me');
+        }).then(function(me) {
+          alert('Hello, ' + me.username);
+        });
+        SC.oEmbed('http://soundcloud.com/forss/sets/soulhack', {
+          element: document.getElementById('player')
+        });
+      </script>
+      <!-- <script src="soundcloud.js"></script> -->
+    </head>
+    <body>
+      <!-- <h1>Welcome to SoundCloud Shuffle!</h1>
+      <h3>Since SoundCloud on Desktop can't even get a random shuffle right, I've made a solution out of spite. Enjoy!</h3>
+      <h4 id='songtitle'></h4>
+      <button id='previous'>Previous</button>
+      <button id='playpause'>Play</button>
+      <button id='next'>Next</button> -->
+      <button id='check'>check</button>
+      <ul id="results">
+
+      </ul>
+      <div id="player"></div>
+    </body>
+</html>
